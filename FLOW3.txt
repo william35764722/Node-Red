@@ -1,13 +1,13 @@
 [
     {
-        "id": "fdaf43f4.c5537",
+        "id": "8ee9a40b.e7ffb8",
         "type": "tab",
-        "label": "Flow 3"
+        "label": "Flow 2"
     },
     {
-        "id": "1afc962b.75094a",
+        "id": "a02d6b52.183dd8",
         "type": "inject",
-        "z": "fdaf43f4.c5537",
+        "z": "8ee9a40b.e7ffb8",
         "name": "",
         "topic": "",
         "payload": "",
@@ -15,69 +15,88 @@
         "repeat": "5",
         "crontab": "",
         "once": true,
-        "x": 170,
-        "y": 151.25,
+        "x": 130,
+        "y": 200,
         "wires": [
             [
-                "9cb02d56.ff7aa"
+                "26737745.966b18"
             ]
         ]
     },
     {
-        "id": "9cb02d56.ff7aa",
+        "id": "26737745.966b18",
         "type": "function",
-        "z": "fdaf43f4.c5537",
+        "z": "8ee9a40b.e7ffb8",
         "name": "Payload",
-        "func": "msg.headers={\n    deviceKey: \"nUiK4kH6M9HioJJT\"\n};\n\nmsg.payload= \"Temperature,,87\"\nmsg.payload= \"Humidity,,87\"\nreturn msg;",
+        "func": "msg.headers={\n    deviceKey: \"nUiK4kH6M9HioJJT\"\n};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 378.75,
-        "y": 153.75,
+        "x": 346.6666666666667,
+        "y": 204.44444444444443,
         "wires": [
             [
-                "54757f9f.87b6f"
+                "fe70ce34.b5667",
+                "d9b3fa52.8b4b98"
             ]
         ]
     },
     {
-        "id": "54757f9f.87b6f",
+        "id": "fe70ce34.b5667",
         "type": "http request",
-        "z": "fdaf43f4.c5537",
+        "z": "8ee9a40b.e7ffb8",
         "name": "",
-        "method": "POST",
+        "method": "GET",
         "ret": "txt",
-        "url": "https://api.mediatek.com/mcs/v2/devices/Dd2khgXD/datapoints.csv",
+        "url": "http://api.mediatek.com/mcs/v2/devices/Dd2khgXD/datachannels/Temperature/datapoints.csv",
         "tls": "",
-        "x": 572.5,
-        "y": 157.5,
+        "x": 650,
+        "y": 200,
         "wires": [
             [
-                "b71aa531.0ffc78",
-                "45511d38.abaa64"
+                "7f54b556.5c3a8c",
+                "1e922b94.2441f4"
             ]
         ]
     },
     {
-        "id": "45511d38.abaa64",
+        "id": "7f54b556.5c3a8c",
         "type": "http response",
-        "z": "fdaf43f4.c5537",
+        "z": "8ee9a40b.e7ffb8",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 825.8928413391113,
-        "y": 155.53571605682373,
+        "x": 890,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "b71aa531.0ffc78",
+        "id": "1e922b94.2441f4",
         "type": "debug",
-        "z": "fdaf43f4.c5537",
+        "z": "8ee9a40b.e7ffb8",
         "name": "",
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 833.75,
-        "y": 220,
+        "x": 890,
+        "y": 260,
         "wires": []
+    },
+    {
+        "id": "d9b3fa52.8b4b98",
+        "type": "http request",
+        "z": "8ee9a40b.e7ffb8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/Dd2khgXD/datachannels/Humidity/datapoints.csv",
+        "tls": "",
+        "x": 650,
+        "y": 260,
+        "wires": [
+            [
+                "7f54b556.5c3a8c",
+                "1e922b94.2441f4"
+            ]
+        ]
     }
 ]
